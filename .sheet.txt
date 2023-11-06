@@ -5,3 +5,9 @@ shmdt(str) // detach from shared mem
 shmctl(shmid, IPC_RMID, NULL) // destory the shared mem
 shared_memory = (char *) mmap(0, sizeof(char), PROT_READ | PROT_WRITE, 
                               MAP_ANONYMOUS | MAP_SHARED, -1, 0);
+
+
+void handle_sigint(int sig)
+signal(SIGINT, handle_sigint)
+signal(SIGINT, SIG_DFL)
+kill(pid, SIGINT)
