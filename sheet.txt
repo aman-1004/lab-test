@@ -1,0 +1,7 @@
+ftok("shmfile", 65) // to generate unique key
+shmget(key, 1024, 0666 | IPC_CREAT) // shmget returns an identifier in shmid
+shmat(shmid, (void*) 0, 0) // shmat to attach to shared mem 
+shmdt(str) // detach from shared mem
+shmctl(shmid, IPC_RMID, NULL) // destory the shared mem
+shared_memory = (char *) mmap(0, sizeof(char), PROT_READ | PROT_WRITE, 
+                              MAP_ANONYMOUS | MAP_SHARED, -1, 0);
